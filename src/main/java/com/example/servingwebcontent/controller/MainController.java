@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.controller;
 
 import com.example.servingwebcontent.domain.Message;
 import com.example.servingwebcontent.repository.MessageRepo;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
