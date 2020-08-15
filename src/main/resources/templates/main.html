@@ -5,28 +5,31 @@
     <title>home</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
     <div>
-        <form method="post">
+        <form th:action="@{/main}" method="post">
             <input type="text" name="text" placeholder="Введите сообщение" />
             <input type="text" name="tag" placeholder="Тэг">
             <button type="submit">Добавить</button>
         </form>
     </div>
 
-    <form method="post" action="tagfilter">
+    <form th:action="@{/tagfilter}" method="post">
         <div>Фильтр тэгов</div>
         <input type="text" name="tagfilter">
         <button type="submit">Найти</button>
     </form>
 
-    <form method="post" action="textfilter">
+    <form th:action="@{/textfilter}" method="post">
         <div>Фильтр текста</div>
         <input type="text" name="textfilter">
         <button type="submit">Найти</button>
     </form>
 
     <div>Список сообщений</div>
-    <div th:each="message : ${messages}">
+    <div th:action="@{/main}" th:each="message : ${messages}">
         <b th:text="'id = ' + ${message.id}"></b>
         <span th:text="'text = ' + ${message.name}"></span>
         <i th:text="'tag = ' + ${message.tag}"></i>
