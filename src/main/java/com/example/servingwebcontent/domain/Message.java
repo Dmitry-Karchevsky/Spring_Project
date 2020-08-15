@@ -1,9 +1,6 @@
 package com.example.servingwebcontent.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Message {
@@ -14,12 +11,28 @@ public class Message {
     private String name;
     private String tag;
 
-    public Message() {
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
 
-    public Message(String name, String tag) {
+    public Message() {}
+
+    public Message(String name, String tag, User author) {
         this.name = name;
         this.tag = tag;
+        this.author = author;
+    }
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public Long getId() {
