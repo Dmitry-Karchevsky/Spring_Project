@@ -2,10 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>hiii</title>
+    <title>home</title>
 </head>
 <body>
-    <p th:text="'Hello, DEFAULT!'"></p>
-    <p th:text="'Hello, DEFAULT2!'"></p>
+    <div>
+        <form method="post">
+            <input type="text" name="text" placeholder="Введите сообщение" />
+            <input type="text" name="tag" placeholder="Тэг">
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+
+    <form method="post" action="tagfilter">
+        <div>Фильтр тэгов</div>
+        <input type="text" name="tagfilter">
+        <button type="submit">Найти</button>
+    </form>
+
+    <form method="post" action="textfilter">
+        <div>Фильтр текста</div>
+        <input type="text" name="textfilter">
+        <button type="submit">Найти</button>
+    </form>
+
+    <div>Список сообщений</div>
+    <div th:each="message : ${messages}">
+        <b th:text="'id = ' + ${message.id}"></b>
+        <span th:text="'text = ' + ${message.name}"></span>
+        <i th:text="'tag = ' + ${message.tag}"></i>
+    </div>
+    <div></div>
 </body>
 </html>
